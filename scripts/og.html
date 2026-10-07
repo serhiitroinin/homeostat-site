@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Instrument Serif"; src: url("../src/fonts/instrument-serif-regular.woff2") format("woff2"); }
+  @font-face { font-family: "Instrument Serif"; font-style: italic; src: url("../src/fonts/instrument-serif-italic.woff2") format("woff2"); }
+  @font-face { font-family: "IBM Plex Mono"; src: url("../src/fonts/ibm-plex-mono-400.woff2") format("woff2"); }
+  html, body { margin: 0; }
+  body { width: 1200px; height: 630px; background: #f4f0e6; color: #1c1a16; position: relative; overflow: hidden;
+    background-image: radial-gradient(900px 500px at 90% -10%, rgba(163,84,10,.14), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(28,26,22,.035) 3px 4px); }
+  .frame { position: absolute; inset: 40px; border: 1px solid #cdc5b3; }
+  .brand { position: absolute; left: 80px; top: 76px; display: flex; align-items: center; gap: 14px; font-family: "Instrument Serif"; font-size: 40px; }
+  .brand svg { width: 44px; height: 44px; }
+  .eyebrow { position: absolute; left: 80px; top: 170px; font-family: "IBM Plex Mono"; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: #514b40; }
+  h1 { position: absolute; left: 80px; top: 208px; margin: 0; width: 640px; font-family: "Instrument Serif"; font-weight: 400; font-size: 92px; line-height: .96; letter-spacing: -.02em; }
+  h1 em { color: #8f4706; }
+  .sub { position: absolute; left: 80px; top: 436px; width: 600px; font-family: "IBM Plex Mono"; font-size: 18px; line-height: 1.5; color: #514b40; }
+  .url { position: absolute; left: 80px; bottom: 58px; font-family: "IBM Plex Mono"; font-size: 17px; letter-spacing: .08em; color: #514b40; }
+  .panel { position: absolute; right: 80px; top: 170px; width: 360px; border: 1px solid #cdc5b3; background: #ebe6d9; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 1px; box-sizing: border-box; }
+  .panel { background: #cdc5b3; }
+  .dial { background: #ebe6d9; padding: 18px 14px 12px; text-align: center; font-family: "IBM Plex Mono"; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #514b40; }
+  .dial svg { width: 130px; display: block; margin: 0 auto 6px; overflow: visible; }
+</style></head>
+<body>
+  <div class="frame"></div>
+  <div class="brand">
+    <svg viewBox="0 0 64 64"><g fill="none" stroke="#1c1a16" stroke-width="3.5" stroke-linecap="round"><path d="M12 36a20 20 0 0 1 40 0"/><path d="M12 36h5M47 36h5M17.9 21.9l3.5 3.5M46.1 21.9l-3.5 3.5"/><path d="M32 36V18"/><path d="M14 48h36" stroke-width="3"/></g><circle cx="32" cy="36" r="4.5" fill="#8f4706"/></svg>
+    Homeostat
+  </div>
+  <div class="eyebrow">Early preview · self-hosted · local-first</div>
+  <h1>Your health data, <em>kept at home.</em></h1>
+  <div class="sub">WHOOP, Garmin and FreeStyle Libre in one SQLite file on your machine. Charts with evidence, an offline run map, and an AI that cites every number.</div>
+  <div class="url">homeostat.so</div>
+  <div class="panel">
+    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Sleep</div>
+    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Strain</div>
+    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Glucose</div>
+    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Load</div>
+  </div>
+</body></html>
