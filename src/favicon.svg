@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p { fill: #f4f0e6; }
+    .k { stroke: #1c1a16; }
+    .a { fill: #8f4706; }
+    @media (prefers-color-scheme: dark) {
+      .p { fill: #151614; }
+      .k { stroke: #ece6d8; }
+      .a { fill: #e9a63c; }
+    }
+  </style>
+  <rect class="p" width="64" height="64" rx="14"/>
+  <g class="k" fill="none" stroke-width="3" stroke-linecap="round">
+    <path d="M12 36a20 20 0 0 1 40 0"/>
+    <path d="M12 36h5M47 36h5M17.9 21.9l3.5 3.5M46.1 21.9l-3.5 3.5"/>
+    <path d="M32 36V18"/>
+    <path d="M14 48h36" stroke-width="2.5"/>
+  </g>
+  <circle class="a" cx="32" cy="36" r="4.5"/>
+</svg>
