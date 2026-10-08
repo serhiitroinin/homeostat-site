@@ -670,3 +670,17 @@ section { padding-block: clamp(4rem, 7vw, 6rem) 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ---------- prose pages (/privacy/) ---------- */
+.prose { max-width: 40rem; padding-block: clamp(3rem, 6vw, 5rem) clamp(4rem, 7vw, 6rem); }
+.prose h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); margin-bottom: 1rem; }
+.prose h1 em { font-style: italic; font-weight: 340; color: var(--clay-text); }
+.prose .updated { margin: 0 0 clamp(2rem, 4vw, 3rem); }
+.prose h2 { font-size: clamp(1.45rem, 2.4vw, 1.8rem); margin: 2.4rem 0 .8rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.prose p { color: var(--ink-2); }
+.prose p a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: .25em; transition: text-decoration-color .4s var(--ease); }
+.prose p a:hover { text-decoration-color: var(--ink); }
+.prose .back { margin-top: 2.5rem; }
+.prose .back a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 500; }
+.page-foot { padding-bottom: 0; }
+.page-foot .foot { margin-top: 0; }
