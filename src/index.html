@@ -3,360 +3,585 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homeostat — your health data, kept at home</title>
-  <meta name="description" content="Homeostat is a self-hosted, local-first personal health data vault. WHOOP, Garmin and FreeStyle Libre in one SQLite file on your own machine, with charts, a run map, goals, and an AI you can question with every number cited. Early preview.">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f0e6">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151614">
-  <link rel="canonical" href="https://homeostat.so/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/fonts/instrument-serif-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css">
+  <title>Homeostat · self-hosted health vault for WHOOP, Garmin and Libre</title>
+  <meta name="description" content="Self-hosted health vault. WHOOP, Garmin and FreeStyle Libre data in one SQLite file on your own computer, with cited answers to your questions. Try the live demo on synthetic data.">
+  <link rel="canonical" href="https://gethomeostat.com/">
+  <link rel="alternate" type="application/atom+xml" title="Homeostat releases" href="/releases.xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Homeostat">
-  <meta property="og:title" content="Homeostat — your health data, kept at home">
-  <meta property="og:description" content="A self-hosted, local-first health data vault. One SQLite file on your machine. WHOOP, Garmin, FreeStyle Libre. Charts with evidence, a run map, goals, and an AI that cites every number. Early preview.">
-  <meta property="og:url" content="https://homeostat.so/">
-  <meta property="og:image" content="https://homeostat.so/og.png">
+  <meta property="og:title" content="Homeostat. Your health data, kept at home.">
+  <meta property="og:description" content="WHOOP, Garmin and FreeStyle Libre data in one SQLite file on your own computer. Every number traces back to its raw record. Try the live demo on synthetic data.">
+  <meta property="og:url" content="https://gethomeostat.com/">
+  <meta property="og:image" content="https://gethomeostat.com/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Homeostat: four instrument dials with their needles at rest in the centre, and the line “Your health data, kept at home.”">
+  <meta property="og:image:alt" content="Homeostat: your health data, kept at home. WHOOP, Garmin and FreeStyle Libre data in one file on your own computer.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3ede3">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1f1c">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://gethomeostat.com/#org",
+        "name": "PetFactory LLC",
+        "brand": { "@type": "Brand", "name": "Homeostat" },
+        "email": "hello@gethomeostat.com",
+        "url": "https://gethomeostat.com/",
+        "founder": { "@id": "https://gethomeostat.com/#serhii" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://gethomeostat.com/#serhii",
+        "name": "Serhii Troinin",
+        "homeLocation": { "@type": "Place", "name": "Amsterdam" },
+        "sameAs": ["https://github.com/serhiitroinin"],
+        "worksFor": { "@id": "https://gethomeostat.com/#org" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://gethomeostat.com/#website",
+        "url": "https://gethomeostat.com/",
+        "name": "Homeostat",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://gethomeostat.com/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://gethomeostat.com/#app",
+        "name": "Homeostat",
+        "description": "Self-hosted health data vault. WHOOP, Garmin and FreeStyle Libre data in one SQLite file on your own computer, with cited answers to plain-language questions from Claude on your own API key or from local Ollama.",
+        "applicationCategory": "HealthApplication",
+        "softwareVersion": "Early preview",
+        "isAccessibleForFree": true,
+        "url": "https://gethomeostat.com/",
+        "featureList": [
+          "WHOOP, Garmin and FreeStyle Libre data in one local SQLite file",
+          "Evidence for every value: connector, batch, raw payload hash and revision",
+          "Ask with citations via Claude (your API key) or local Ollama",
+          "MCP server for your own agents",
+          "FHIR R4 export",
+          "Offline run maps, Training and Goals",
+          "Public live demo"
+        ],
+        "author": { "@id": "https://gethomeostat.com/#serhii" },
+        "publisher": { "@id": "https://gethomeostat.com/#org" }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://gethomeostat.com/#demo",
+        "name": "Homeostat live demo",
+        "url": "https://demo.gethomeostat.com",
+        "description": "The real Homeostat app on synthetic sample data. Read-only, no sign-up. Claude answers questions, up to a daily limit.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any web browser",
+        "isAccessibleForFree": true,
+        "publisher": { "@id": "https://gethomeostat.com/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://gethomeostat.com/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is it a medical device?", "acceptedAnswer": { "@type": "Answer", "text": "No. Homeostat shows your own data and cites where each number came from. It doesn't diagnose anything, and Ask gives no medical or dosing advice." } },
+          { "@type": "Question", "name": "Does my data leave my computer?", "acceptedAnswer": { "@type": "Answer", "text": "Your data stays in one file on your computer. When you ask Claude a question, only that question and the records it needs go to Anthropic, under your own API key. With Ollama, nothing leaves." } },
+          { "@type": "Question", "name": "Which devices does it support?", "acceptedAnswer": { "@type": "Answer", "text": "WHOOP, Garmin and FreeStyle Libre." } },
+          { "@type": "Question", "name": "Can I try it?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The live demo at demo.gethomeostat.com is the real app on synthetic sample data. It's read-only and needs no sign-up. You can ask it questions, and Claude answers them on the demo's own key, up to a daily limit." } },
+          { "@type": "Question", "name": "When can I install it?", "acceptedAnswer": { "@type": "Answer", "text": "There is no date yet. Homeostat runs from source today and has no installer, but you can try the live demo now. Email hello@gethomeostat.com and you'll get one email when it installs." } }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="top">
-    <a class="brand" href="/" aria-label="Homeostat home">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-        <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
-          <path d="M12 36a20 20 0 0 1 40 0"/>
-          <path d="M12 36h5M47 36h5M17.9 21.9l3.5 3.5M46.1 21.9l-3.5 3.5"/>
-          <path d="M32 36V18"/>
-          <path d="M14 48h36" stroke-width="3"/>
-        </g>
-        <circle cx="32" cy="36" r="4.5" fill="var(--amber)"/>
-      </svg>
-      <span class="wordmark">Homeostat</span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="#how">How it works</a>
-      <a href="#ask">Ask</a>
-      <a href="#name">The name</a>
-      <a href="/privacy/">Privacy</a>
-      <a class="btn btn-small" href="mailto:hello@homeostat.so?subject=Homeostat%20early%20access">Get notified</a>
-    </nav>
+    <div class="pill">
+      <a class="brand" href="/" aria-label="Homeostat home">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M2 14h4l2.5-6L11 18l2.5-7 2 3H22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="wordmark">Homeostat</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#evidence">Evidence</a>
+        <a href="#ask">Ask</a>
+        <a href="#training">Training</a>
+        <a href="#faq">FAQ</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+      <a class="btn btn-sm" href="https://demo.gethomeostat.com">Live demo<span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </div>
   </header>
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
+    <!-- hero -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Early preview · self-hosted · local-first</p>
-        <h1 id="hero-title">Your health data, <em>kept at home.</em></h1>
+      <div class="wrap"><div class="hero-copy">
+        <p class="eyebrow mono">Self-hosted health vault · WHOOP · Garmin · FreeStyle Libre</p>
+        <h1 id="hero-title">Your health data,<br><em>kept at home.</em></h1>
         <p class="lede">
-          Homeostat pulls your WHOOP, Garmin and FreeStyle Libre data into one SQLite file on your own machine,
-          then gives you charts with evidence, a run map that works offline, goals that keep their history,
-          and an AI you can question about your own body — with every number cited.
+          Homeostat pulls all three into one SQLite file on your own computer. Click any number to see the raw
+          record behind it. Ask in plain words, and every figure in the answer cites its source.
         </p>
-        <p class="lede strong">Nothing goes to a cloud we run. There is none.</p>
-        <div class="cta-row">
-          <a class="btn" href="mailto:hello@homeostat.so?subject=Homeostat%20early%20access">Get notified</a>
-          <a class="link-arrow" href="#how">How it works<span aria-hidden="true"> →</span></a>
-        </div>
-        <p class="fineprint">Open source (MIT) — source release coming. Built by one engineer in Amsterdam.</p>
-      </div>
-
-      <figure class="panel" aria-labelledby="panel-caption">
-        <div class="panel-head">
-          <span>Homeostat · unit panel</span>
-          <span class="panel-state"><span class="dot" aria-hidden="true"></span>at rest</span>
-        </div>
-        <div class="dials">
-          <!-- Four units, as on Ashby's 1948 machine. Needles settle to centre on load. -->
-          <div class="dial" style="--from:-38deg">
-            <svg viewBox="0 0 120 90" aria-hidden="true" focusable="false">
-              <path class="arc" d="M14 74a46 46 0 0 1 92 0"/>
-              <g class="ticks">
-                <path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6"/>
-              </g>
-              <path class="band" d="M46 36a28 28 0 0 1 28 0"/>
-              <g class="needle"><path d="M60 74V36"/></g>
-              <circle class="hub" cx="60" cy="74" r="4"/>
-            </svg>
-            <span class="dial-label">Sleep</span>
+        <div class="cta cta-pair">
+          <div class="cta-item">
+            <a class="btn btn-lg" href="https://demo.gethomeostat.com">Try the live demo<span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <p class="micro">Real app, synthetic data. No sign-up.</p>
           </div>
-          <div class="dial" style="--from:31deg">
-            <svg viewBox="0 0 120 90" aria-hidden="true" focusable="false">
-              <path class="arc" d="M14 74a46 46 0 0 1 92 0"/>
-              <g class="ticks">
-                <path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6"/>
-              </g>
-              <path class="band" d="M46 36a28 28 0 0 1 28 0"/>
-              <g class="needle"><path d="M60 74V36"/></g>
-              <circle class="hub" cx="60" cy="74" r="4"/>
-            </svg>
-            <span class="dial-label">Strain</span>
-          </div>
-          <div class="dial" style="--from:52deg">
-            <svg viewBox="0 0 120 90" aria-hidden="true" focusable="false">
-              <path class="arc" d="M14 74a46 46 0 0 1 92 0"/>
-              <g class="ticks">
-                <path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6"/>
-              </g>
-              <path class="band" d="M46 36a28 28 0 0 1 28 0"/>
-              <g class="needle"><path d="M60 74V36"/></g>
-              <circle class="hub" cx="60" cy="74" r="4"/>
-            </svg>
-            <span class="dial-label">Glucose</span>
-          </div>
-          <div class="dial" style="--from:-22deg">
-            <svg viewBox="0 0 120 90" aria-hidden="true" focusable="false">
-              <path class="arc" d="M14 74a46 46 0 0 1 92 0"/>
-              <g class="ticks">
-                <path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6"/>
-              </g>
-              <path class="band" d="M46 36a28 28 0 0 1 28 0"/>
-              <g class="needle"><path d="M60 74V36"/></g>
-              <circle class="hub" cx="60" cy="74" r="4"/>
-            </svg>
-            <span class="dial-label">Load</span>
+          <div class="cta-item">
+            <a class="btn btn-lg btn-ghost" href="mailto:hello@gethomeostat.com?subject=Homeostat%20waitlist&amp;body=Tell%20me%20when%20Homeostat%20is%20installable.%0D%0ADevices%20I%20use%3A%20%0D%0AOperating%20system%3A%20">Email me when it installs</a>
+            <p class="micro">Opens your mail app. One email when it installs.</p>
           </div>
         </div>
-        <figcaption id="panel-caption" class="panel-foot">
-          <span>db.sqlite · 127.0.0.1 · one writer</span>
-          <span>no cloud</span>
-        </figcaption>
-      </figure>
-    </section>
+        <p class="techline mono">WHOOP · Garmin · FreeStyle Libre · Claude via your API key · Ollama optional</p>
+      </div></div>
 
-    <!-- ============ PRINCIPLES ============ -->
-    <section class="principles" aria-label="Principles">
-      <div class="principle">
-        <span class="num">01</span>
-        <h2>One file.</h2>
-        <p>Everything lives in a single SQLite database on your disk. Copy it, back it up, open it with any SQLite tool.</p>
-      </div>
-      <div class="principle">
-        <span class="num">02</span>
-        <h2>One writer.</h2>
-        <p>A small daemon is the only process that writes to it. It serves the web app on localhost and syncs your connectors.</p>
-      </div>
-      <div class="principle">
-        <span class="num">03</span>
-        <h2>No cloud.</h2>
-        <p>We do not run a server. Nothing to sign up for, nothing to breach. Whether data ever leaves your machine is your call, per engine.</p>
-      </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="how" id="how" aria-labelledby="how-title">
-      <div class="section-head">
-        <p class="eyebrow">How it works</p>
-        <h2 id="how-title">Sources in. <em>Evidence out.</em></h2>
-      </div>
-
-      <div class="flow">
-        <div class="flow-col">
-          <h3 class="flow-title"><span class="num">in</span> Connectors</h3>
-          <ul class="plain">
-            <li><strong>WHOOP</strong> <span class="muted">recovery, sleep, strain, workouts</span></li>
-            <li><strong>Garmin Connect</strong> <span class="muted">workouts with GPS run tracks</span></li>
-            <li><strong>FreeStyle Libre</strong> <span class="muted">continuous glucose</span></li>
-          </ul>
-          <p class="small">A workout recorded by both WHOOP and Garmin is merged at read time. The raw rows stay untouched.</p>
-        </div>
-
-        <div class="flow-col flow-core" aria-hidden="true">
-          <svg viewBox="0 0 160 160" class="core-glyph" focusable="false">
-            <rect x="20" y="20" width="120" height="120" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M20 50h120M20 80h120M20 110h120" stroke="currentColor" stroke-width="1" opacity=".4"/>
-            <path d="M50 20v120M80 20v120M110 20v120" stroke="currentColor" stroke-width="1" opacity=".4"/>
-            <circle cx="80" cy="80" r="9" fill="var(--amber)"/>
-            <path d="M0 80h20M140 80h20M80 0v20M80 140v20" stroke="currentColor" stroke-width="2"/>
+      <div class="shore-stage">
+        <div class="stage" aria-hidden="true">
+          <picture class="shore">
+            <source media="(max-width: 720px)" srcset="/img/sand-800.webp" type="image/webp">
+            <source srcset="/img/sand-800.webp 800w, /img/sand-1600.webp 1600w" sizes="100vw" type="image/webp">
+            <img src="/img/sand-1600.webp" alt="" width="1600" height="900" decoding="async">
+          </picture>
+          <svg class="trace-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--trace)" stop-opacity="0"/>
+                <stop offset=".06" stop-color="var(--trace)" stop-opacity="1"/>
+                <stop offset=".94" stop-color="var(--trace)" stop-opacity="1"/>
+                <stop offset="1" stop-color="var(--trace)" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="bloom" x="-5%" y="-40%" width="110%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
+              <path id="g" d="M0 201 L5 201 L10 201 L15 200 L20 200 L25 200 L30 199 L35 199 L40 199 L45 198 L50 198 L55 199 L60 199 L65 199 L70 199 L75 199 L80 199 L85 199 L90 199 L95 199 L100 199 L105 199 L110 198 L115 199 L120 199 L125 199 L130 198 L135 198 L140 199 L145 199 L150 199 L155 200 L160 201 L165 201 L170 201 L175 202 L180 202 L185 201 L190 201 L195 201 L200 202 L205 203 L210 203 L215 203 L220 204 L225 204 L230 204 L235 204 L240 204 L245 204 L250 203 L255 201 L260 200 L265 199 L270 198 L276 197 L281 197 L286 197 L291 196 L296 195 L301 194 L306 194 L311 194 L316 193 L321 193 L326 193 L331 193 L336 194 L341 195 L346 196 L351 196 L356 198 L361 199 L366 200 L371 201 L376 204 L381 205 L386 207 L391 208 L396 210 L401 212 L406 213 L411 215 L416 217 L421 220 L426 221 L431 224 L436 228 L441 233 L446 240 L451 246 L456 252 L461 256 L466 259 L471 260 L476 261 L481 260 L486 256 L491 251 L496 244 L501 234 L506 221 L511 208 L516 194 L521 179 L526 165 L531 152 L536 140 L541 129 L546 123 L551 118 L556 118 L562 121 L567 125 L572 130 L577 136 L582 143 L587 150 L592 157 L597 164 L602 172 L607 178 L612 185 L617 191 L622 197 L627 202 L632 207 L637 211 L642 215 L647 218 L652 221 L657 223 L662 224 L667 225 L672 226 L677 227 L682 228 L687 228 L692 229 L697 229 L702 228 L707 228 L712 228 L717 227 L722 227 L727 226 L732 225 L737 226 L742 226 L747 226 L752 226 L757 226 L762 226 L767 226 L772 225 L777 225 L782 224 L787 221 L792 217 L797 211 L802 204 L807 195 L812 186 L817 176 L822 165 L827 154 L832 144 L837 135 L842 128 L847 126 L853 125 L858 127 L863 130 L868 133 L873 136 L878 140 L883 144 L888 149 L893 154 L898 160 L903 165 L908 170 L913 174 L918 178 L923 182 L928 186 L933 189 L938 193 L943 195 L948 198 L953 200 L958 202 L963 203 L968 204 L973 205 L978 205 L983 206 L988 206 L993 206 L998 205 L1003 205 L1008 204 L1013 204 L1018 205 L1023 204 L1028 204 L1033 204 L1038 204 L1043 204 L1048 204 L1053 204 L1058 205 L1063 205 L1068 205 L1073 204 L1078 203 L1083 203 L1088 202 L1093 202 L1098 202 L1103 202 L1108 202 L1113 201 L1118 200 L1123 200 L1128 199 L1133 199 L1139 200 L1144 200 L1149 200 L1154 200 L1159 199 L1164 200 L1169 199 L1174 197 L1179 194 L1184 190 L1189 182 L1194 173 L1199 162 L1204 150 L1209 137 L1214 124 L1219 111 L1224 97 L1229 87 L1234 80 L1239 76 L1244 76 L1249 79 L1254 82 L1259 86 L1264 90 L1269 94 L1274 99 L1279 104 L1284 110 L1289 116 L1294 122 L1299 129 L1304 136 L1309 142 L1314 148 L1319 155 L1324 161 L1329 166 L1334 171 L1339 175 L1344 179 L1349 183 L1354 186 L1359 189 L1364 191 L1369 194 L1374 196 L1379 198 L1384 200 L1389 201 L1394 203 L1399 205 L1404 206 L1409 207 L1414 208 L1419 208 L1424 208 L1430 208 L1435 209 L1440 209"/>
+            </defs>
+            <rect class="band" x="0" y="22" width="1440" height="267"/>
+            <line class="band-edge" x1="0" y1="22" x2="1440" y2="22"/>
+            <line class="band-edge" x1="0" y1="289" x2="1440" y2="289"/>
+            <use class="bloom" href="#g" filter="url(#bloom)"/>
+            <use class="line" href="#g" stroke="url(#edge)"/>
           </svg>
-          <span class="core-label">db.sqlite</span>
         </div>
 
-        <div class="flow-col">
-          <h3 class="flow-title"><span class="num">out</span> Interfaces</h3>
-          <ul class="plain">
-            <li><strong>Web app</strong> <span class="muted">served by the daemon on localhost</span></li>
-            <li><strong>Ask</strong> <span class="muted">chat with your data, every number cited</span></li>
-            <li><strong>MCP server</strong> <span class="muted">your own agents, scoped read access</span></li>
-            <li><strong>FHIR R4 export</strong> <span class="muted">take the data anywhere</span></li>
-          </ul>
+        <div class="wrap">
+          <figure class="fig fig-hero">
+            <div class="frame frame-hero">
+              <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/</span></div>
+              <div class="frame-in">
+                <picture>
+                  <source media="(max-width: 720px) and (prefers-color-scheme: dark)" type="image/webp"
+                          srcset="/app-shots/mobile-overview-dark@2x.webp 780w, /app-shots/mobile-overview-dark@3x.webp 1170w"
+                          sizes="min(320px, 82vw)" width="780" height="1688">
+                  <source media="(max-width: 720px)" type="image/webp"
+                          srcset="/app-shots/mobile-overview-light@2x.webp 780w, /app-shots/mobile-overview-light@3x.webp 1170w"
+                          sizes="min(320px, 82vw)" width="780" height="1688">
+                  <source media="(prefers-color-scheme: dark)" type="image/webp"
+                          srcset="/app-shots/overview-dark.webp 1440w, /app-shots/overview-dark@2x.webp 2880w"
+                          sizes="(min-width: 1340px) 1164px, 90vw">
+                  <img src="/app-shots/overview-light.webp"
+                       srcset="/app-shots/overview-light.webp 1440w, /app-shots/overview-light@2x.webp 2880w"
+                       sizes="(min-width: 1340px) 1164px, 90vw"
+                       width="1440" height="900" decoding="async" fetchpriority="high"
+                       alt="Homeostat Overview with synthetic sample data: a current glucose of 118 mg/dL, a 14-day glucose trace with 97.4% of samples in range, a coverage and source line for the Libre sensor, the method used, and a table of sleep, HRV, resting heart rate, recovery, body battery and steps per day.">
+                </picture>
+                <!-- callouts: positions are fractions of the screenshot (desktop 1440x900, phone crop 390x660) -->
+                <ol class="pins" aria-hidden="true">
+                  <li class="pin" style="--x:14.7%; --y:22.8%; --len:8cqw; --mx:60%; --my:32.7%"><span class="pin-c"><span class="pin-n">1</span><span class="pin-t">Each value opens its raw record</span></span></li>
+                  <li class="pin pin-l" style="--x:57.6%; --y:13.3%; --len:3.6cqw; --mx:64%; --my:22.3%"><span class="pin-c"><span class="pin-n">2</span><span class="pin-t">Coverage and source sensor</span></span></li>
+                  <li class="pin" style="--x:51.8%; --y:58.8%; --len:3.4cqw; --mx:90%; --my:92.6%"><span class="pin-c"><span class="pin-n">3</span><span class="pin-t">How it was computed</span></span></li>
+                </ol>
+              </div>
+            </div>
+            <figcaption class="cap">
+              <span class="mono">Fig 1 · Overview</span>
+              <span class="mono cap-note">Synthetic sample data</span>
+              <ol class="pin-list">
+                <li>Each value opens its raw record.</li>
+                <li>Coverage and the sensor it came from.</li>
+                <li>The method and time window behind the figures.</li>
+              </ol>
+            </figcaption>
+          </figure>
         </div>
-      </div>
-
-      <div class="features">
-        <article class="feature feature-wide">
-          <h3>Explore</h3>
-          <p>Charts of every metric. Each number links to the raw measurement it was computed from, so a chart is never the end of the trail.</p>
-        </article>
-        <article class="feature">
-          <h3>Training</h3>
-          <p>A run map on an offline vector basemap, downloaded once for the areas you run in. No tile server is called afterwards.</p>
-        </article>
-        <article class="feature">
-          <h3>Goals</h3>
-          <p>Targets with computed progress and an undo history. A citation to a goal pins the target it was measured against.</p>
-        </article>
-        <article class="feature feature-wide">
-          <h3>Day model</h3>
-          <p>Each day summarised from its own measurements: sleep, recovery, glucose, workouts. The unit of comparison across weeks.</p>
-        </article>
       </div>
     </section>
 
-    <!-- ============ ASK ============ -->
-    <section class="ask" id="ask" aria-labelledby="ask-title">
-      <div class="ask-inner">
-        <div class="ask-copy">
-          <p class="eyebrow">Ask</p>
+    <!-- one file, and the four things nobody gets -->
+    <section class="vault wrap" aria-labelledby="vault-title">
+      <div class="vault-grid">
+        <div class="vault-copy">
+          <h2 id="vault-title">One file. <em>One writer.</em></h2>
+          <p>
+            Everything lives in a single SQLite database on your disk. Copy it, back it up, open it with any SQLite
+            tool. A small daemon on 127.0.0.1<sup class="fn"><a href="#r1" id="c1" aria-label="Receipt 1">1</a></sup>
+            is the only process that writes to it. Connector tokens and API keys are stored encrypted with
+            AES-256-GCM.<sup class="fn"><a href="#r2" id="c2" aria-label="Receipt 2">2</a></sup>
+          </p>
+          <p class="outlive">Your record outlives the subscription and the sensor.</p>
+        </div>
+        <ol class="claims">
+          <li>
+            <h3>Nobody else holds a copy.</h3>
+            <p>One SQLite file on your disk, and no account. The only Homeostat server is the public demo, and it holds synthetic data.</p>
+          </li>
+          <li>
+            <h3>Nobody else reads your vault.</h3>
+            <p>Questions go to Claude with only the records they need, on your own API key. Or to Ollama, and nothing leaves at all. Health values and prompts are never written to logs.</p>
+          </li>
+          <li>
+            <h3>Nobody can lock you out.</h3>
+            <p>Export everything as FHIR R4. Source release coming, under the MIT license.</p>
+          </li>
+          <li>
+            <h3>Nobody gets telemetry.</h3>
+            <p>The app has no analytics, and its map tiles live on your disk. This page loads nothing from third parties either.<sup class="fn"><a href="#r3" id="c3" aria-label="Receipt 3">3</a></sup></p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- evidence -->
+    <section class="evidence wrap" id="evidence" aria-labelledby="evidence-title">
+      <div class="evidence-grid">
+        <figure class="fig evidence-fig reveal">
+          <div class="frame evidence-shot">
+            <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/explore</span></div>
+            <div class="frame-in">
+              <picture>
+                <source media="(max-width: 720px) and (prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/img/evidence-m-dark@2x.webp" width="710" height="820">
+                <source media="(max-width: 720px)" type="image/webp"
+                        srcset="/img/evidence-m-light@2x.webp" width="710" height="820">
+                <source media="(prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/img/evidence-dark.webp 560w, /img/evidence-dark@2x.webp 1120w"
+                        sizes="560px">
+                <img src="/img/evidence-light.webp"
+                     srcset="/img/evidence-light.webp 560w, /img/evidence-light@2x.webp 1120w"
+                     sizes="560px"
+                     width="560" height="780" loading="lazy" decoding="async"
+                     alt="The Explore evidence drawer, 'Where this number came from': a heart rate variability reading of 61.4 ms traced to its WHOOP connector, batch key, commit time, raw payload hash and size, logical key, revision and normaliser, with a revision history table below.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="cap"><span class="mono">Fig 2 · Evidence drawer</span><span class="mono cap-note">WHOOP</span></figcaption>
+        </figure>
+        <div class="evidence-copy">
+          <h2 id="evidence-title">Every number <em>has a receipt.</em></h2>
+          <p>
+            Click any value to see where it came from: connector, batch, raw payload hash,
+            revision.<sup class="fn"><a href="#r4" id="c4" aria-label="Receipt 4">4</a></sup>
+            Ask cites the same chain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ask: the first dark band -->
+    <section class="ask dark" id="ask" aria-labelledby="ask-title">
+      <picture class="night" aria-hidden="true">
+        <source media="(max-width: 720px)" srcset="/img/night-800.webp" type="image/webp">
+        <source srcset="/img/night-800.webp 800w, /img/night-1600.webp 1600w" sizes="100vw" type="image/webp">
+        <img src="/img/night-1600.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </picture>
+      <div class="wrap">
+        <div class="ask-head">
           <h2 id="ask-title">An AI that has to <em>show its work.</em></h2>
           <p>
-            Ask questions about your own data in plain language. Every number in an answer carries a citation to
-            the measurement it came from. A citation that does not resolve is flagged
-            <span class="flag">not in evidence</span>, in the answer, where you can see it.
+            Ask in plain language. Each number in the answer cites the measurement it came from. A number that doesn't
+            trace back is flagged <span class="flag">not in evidence</span>, inside the answer. Answers describe your
+            data and give no medical or dosing advice.
           </p>
-          <p>
-            Descriptive only. Homeostat will tell you what your data says; it will not give medical or dosing advice.
-          </p>
-          <h3 class="sub">Where your question goes is up to you</h3>
-          <table class="engines">
-            <thead>
-              <tr><th scope="col">Engine</th><th scope="col">Runs</th><th scope="col">Data leaves the machine</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Local model via Ollama</td><td>on your machine</td><td>never</td></tr>
-              <tr><td>Claude via the Anthropic API</td><td>remote, your own key</td><td>with per-engine consent</td></tr>
-              <tr><td>Claude Code or Codex CLI</td><td>remote, your own login</td><td>with per-engine consent</td></tr>
-            </tbody>
-          </table>
-          <p class="small">Consent is enforced server-side, not in the UI. Every answer records which engine saw the question.</p>
         </div>
 
-        <figure class="transcript" aria-label="Illustrative Ask exchange; values redacted">
-          <div class="transcript-head">
-            <span>Ask · thread</span>
-            <span class="muted">engine: ollama · local</span>
+        <figure class="fig ask-fig reveal">
+          <div class="ask-stage">
+            <div class="frame frame-deep ask-desk">
+              <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/ask</span></div>
+              <div class="frame-in">
+                <picture>
+                  <source media="(max-width: 720px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                  <img src="/app-shots/ask-dark.webp"
+                       srcset="/app-shots/ask-dark.webp 1440w, /app-shots/ask-dark@2x.webp 2880w"
+                       sizes="(min-width: 1340px) 1052px, 82vw"
+                       width="1440" height="900" loading="lazy" decoding="async"
+                       alt="Homeostat Ask, dark theme, on synthetic sample data: a thread list on the left and Claude Haiku 5.5's answer to 'Did I sleep longer on the nights after my long runs this past month?'. It lists the four nights after Garmin long runs, about 504 minutes on average against about 477 on the other 27 nights, roughly 26 minutes longer, with each value cited and a caveat that four nights is a small sample. A composer is below.">
+                </picture>
+              </div>
+            </div>
+            <div class="phone phone-ask">
+              <div class="phone-in">
+                <img src="/app-shots/mobile-ask-dark@2x.webp"
+                     srcset="/app-shots/mobile-ask-dark@2x.webp 780w, /app-shots/mobile-ask-dark@3x.webp 1170w"
+                     sizes="(max-width: 720px) min(292px, 76vw), (max-width: 1000px) 45vw, 250px"
+                     width="780" height="1688" loading="lazy" decoding="async"
+                     alt="Homeostat Ask on a phone, dark theme, on synthetic sample data: the end of a cited answer about sleep after long runs, its caveats, and the question composer.">
+              </div>
+            </div>
           </div>
-          <div class="msg you">
-            <span class="who">you</span>
-            <p>How did my overnight glucose compare on the nights after a run?</p>
+          <figcaption class="cap"><span class="mono">Fig 3 · Ask</span><span class="mono cap-note">Synthetic sample data · Garmin · WHOOP</span></figcaption>
+        </figure>
+
+        <div class="m-cta">
+          <a class="btn btn-lg btn-light" href="https://demo.gethomeostat.com">Try the live demo<span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- engines + MCP -->
+    <section class="engines wrap" id="engines" aria-labelledby="engines-title">
+      <div class="engines-grid">
+        <div class="engines-copy">
+          <h2 id="engines-title">Where the question goes is your choice.</h2>
+          <p>
+            Ask uses Claude with your own Anthropic API key. Homeostat keeps the key in your local vault, encrypted
+            with AES-256-GCM. Each question sends Anthropic that question and the records needed to answer it, and
+            nothing else.<sup class="fn"><a href="#r5" id="c5" aria-label="Receipt 5">5</a></sup>
+            Ollama runs a model on your own computer, needs no key, and sends nothing anywhere.
+          </p>
+          <dl class="chips">
+            <dt class="mono">Ask</dt>
+            <dd>
+              <ul>
+                <li class="chip chip-on"><b>Claude</b><span>your API key, default</span></li>
+                <li class="chip"><b>Ollama</b><span>local, optional</span></li>
+              </ul>
+            </dd>
+            <dt class="mono">MCP</dt>
+            <dd>
+              <p class="chips-note">Or point your own agent at the MCP server. It gets scoped read access.</p>
+              <ul>
+                <li class="chip"><b>Claude Desktop</b></li>
+                <li class="chip"><b>any MCP client</b></li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+        <figure class="fig engines-fig reveal">
+          <div class="frame engines-shot">
+            <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/settings/engines</span></div>
+            <div class="frame-in">
+              <picture>
+                <source media="(max-width: 720px) and (prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/img/engines-m-dark@2x.webp" width="800" height="528">
+                <source media="(max-width: 720px)" type="image/webp"
+                        srcset="/img/engines-m-light@2x.webp" width="800" height="528">
+                <source media="(prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/img/engines-dark.webp 776w, /img/engines-dark@2x.webp 1552w"
+                        sizes="(min-width: 1340px) 616px, (min-width: 1001px) 46vw, 600px">
+                <img src="/img/engines-light.webp"
+                     srcset="/img/engines-light.webp 776w, /img/engines-light@2x.webp 1552w"
+                     sizes="(min-width: 1340px) 616px, (min-width: 1001px) 46vw, 600px"
+                     width="776" height="282" loading="lazy" decoding="async"
+                     alt="Settings, Engines, with an API key saved: Claude (API) marked remote, default and enabled, the saved key's last characters blurred, with Replace key and Remove key buttons and the note that your question and the values Ask looks up are sent to Anthropic; Ollama marked local, no consent needed.">
+              </picture>
+            </div>
           </div>
-          <div class="msg bot">
-            <span class="who">homeostat</span>
-            <p>
-              On the <span class="red">▮▮</span> nights that followed a run, mean overnight glucose was
-              <span class="red">▮.▮</span> mmol/L <span class="cite">libre · calc · 7 nights</span>,
-              against <span class="red">▮.▮</span> mmol/L on the other nights <span class="cite">libre · calc · 21 nights</span>.
-              Runs were taken from Garmin, with WHOOP duplicates merged <span class="cite">workouts · 4 merged</span>.
-            </p>
-            <p class="muted small">Descriptive summary of your own measurements. Not medical advice.</p>
-          </div>
-          <figcaption class="transcript-foot">Illustrative exchange. Values are redacted; the citation chips are the point.</figcaption>
+          <figcaption class="cap"><span class="mono">Fig 4 · Settings, engines</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ============ TRUST ============ -->
-    <section class="trust" aria-labelledby="trust-title">
-      <div class="section-head">
-        <p class="eyebrow">Under the panel</p>
-        <h2 id="trust-title">Boring on purpose.</h2>
-      </div>
-      <dl class="specs">
-        <div><dt>Storage</dt><dd>One SQLite file. The daemon is its only writer.</dd></div>
-        <div><dt>Secrets</dt><dd>Connector credentials encrypted at rest with AES-256-GCM.</dd></div>
-        <div><dt>Logs</dt><dd>Health values and prompts are never written to logs.</dd></div>
-        <div><dt>Network</dt><dd>The daemon listens on 127.0.0.1. Remote AI engines are opt-in, per engine, enforced server-side.</dd></div>
-        <div><dt>Agents</dt><dd>An MCP server exposes your data to your own agents with scoped access.</dd></div>
-        <div><dt>Portability</dt><dd>FHIR R4 export. Leave whenever you like, with everything.</dd></div>
+    <!-- training + goals: hairline rows -->
+    <section class="rows" id="training" aria-label="Training and goals">
+      <article class="row" aria-labelledby="training-title">
+        <div class="wrap row-head">
+          <h2 id="training-title">A run map that never calls home.</h2>
+          <p>Garmin tracks drawn on a basemap stored on your disk. Download it once and the map makes no more network calls.</p>
+        </div>
+        <figure class="fig training-fig reveal">
+          <div class="bleed"><div class="frame map-shot">
+            <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/training</span></div>
+            <div class="frame-in">
+              <picture>
+                <source media="(max-width: 720px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                <source media="(prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/img/training-dark.webp 1440w, /img/training-dark@2x.webp 2880w"
+                        sizes="(min-width: 1600px) 1344px, 88vw">
+                <img src="/img/training-light.webp"
+                     srcset="/img/training-light.webp 1440w, /img/training-light@2x.webp 2880w"
+                     sizes="(min-width: 1600px) 1344px, 88vw"
+                     width="1440" height="700" loading="lazy" decoding="async"
+                     alt="Homeostat Training: 26 weeks of running summarised as 486 km, 43.8 hours, 55 sessions and a training load of 6086, above a map of 55 recorded tracks around a city lake.">
+              </picture>
+            </div>
+          </div></div>
+          <div class="phone phone-training">
+            <div class="phone-in">
+              <picture>
+                <source media="(min-width: 721px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                <source media="(prefers-color-scheme: dark)" type="image/webp"
+                        srcset="/app-shots/mobile-training-dark@2x.webp 780w, /app-shots/mobile-training-dark@3x.webp 1170w"
+                        sizes="min(292px, 76vw)">
+                <img src="/app-shots/mobile-training-light@2x.webp"
+                     srcset="/app-shots/mobile-training-light@2x.webp 780w, /app-shots/mobile-training-light@3x.webp 1170w"
+                     sizes="min(292px, 76vw)"
+                     width="780" height="1688" loading="lazy" decoding="async"
+                     alt="Homeostat Training on a phone: the run map with recorded tracks around a city lake, and the weekly progress chart.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="cap bleed-cap"><span class="mono">Fig 5 · Training</span><span class="mono cap-note">Garmin</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="row" aria-labelledby="goals-title">
+        <div class="wrap row-head">
+          <h2 id="goals-title">Targets you set. Progress it computes.</h2>
+          <p>Set a target and Homeostat tracks progress from your data. Change it later and the old target stays in history, so an answer that cited it still points to the right number.</p>
+        </div>
+        <figure class="fig wrap goals-fig reveal">
+          <div class="goals-stage">
+            <div class="frame goals-desk">
+              <div class="bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url"><span class="host">127.0.0.1:7777</span>/goals</span></div>
+              <div class="frame-in">
+                <picture>
+                  <source media="(max-width: 720px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                  <source media="(prefers-color-scheme: dark)" type="image/webp"
+                          srcset="/app-shots/goals-dark.webp 1440w, /app-shots/goals-dark@2x.webp 2880w"
+                          sizes="(min-width: 1340px) 1164px, 90vw">
+                  <img src="/app-shots/goals-light.webp"
+                       srcset="/app-shots/goals-light.webp 1440w, /app-shots/goals-light@2x.webp 2880w"
+                       sizes="(min-width: 1340px) 1164px, 90vw"
+                       width="1440" height="640" loading="lazy" decoding="async"
+                       alt="Homeostat Goals: five active goals with progress rings, including 120 km before race day at 69% and on track, resting heart rate at or below 52 achieved, time in range above 90% achieved, sleep 7.5 h a night, and run 25 km a week with a weekly bar chart.">
+                </picture>
+              </div>
+            </div>
+            <div class="phone phone-goals">
+              <div class="phone-in">
+                <picture>
+                  <source media="(prefers-color-scheme: dark)" type="image/webp"
+                          srcset="/app-shots/mobile-goals-dark@2x.webp 780w, /app-shots/mobile-goals-dark@3x.webp 1170w"
+                          sizes="(max-width: 720px) min(292px, 76vw), (max-width: 1000px) 45vw, 210px">
+                  <img src="/app-shots/mobile-goals-light@2x.webp"
+                       srcset="/app-shots/mobile-goals-light@2x.webp 780w, /app-shots/mobile-goals-light@3x.webp 1170w"
+                       sizes="(max-width: 720px) min(292px, 76vw), (max-width: 1000px) 45vw, 210px"
+                       width="780" height="1688" loading="lazy" decoding="async"
+                       alt="Homeostat Goals on a phone: goal cards with progress rings and their current values.">
+                </picture>
+              </div>
+            </div>
+          </div>
+          <figcaption class="cap"><span class="mono">Fig 6 · Goals</span></figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq wrap" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <dl class="faq-list">
+        <div>
+          <dt>Is it a medical device?</dt>
+          <dd>No. Homeostat shows your own data and cites where each number came from. It doesn't diagnose anything, and Ask gives no medical or dosing advice.</dd>
+        </div>
+        <div>
+          <dt>Does my data leave my computer?</dt>
+          <dd>Your data stays in one file on your computer. When you ask Claude a question, only that question and the records it needs go to Anthropic, under your own API key. With Ollama, nothing leaves.</dd>
+        </div>
+        <div>
+          <dt>Which devices does it support?</dt>
+          <dd>WHOOP, Garmin and FreeStyle Libre.</dd>
+        </div>
+        <div>
+          <dt>Can I try it?</dt>
+          <dd>Yes. The <a href="https://demo.gethomeostat.com">live demo</a> is the real app on synthetic sample data. It's read-only and needs no sign-up. You can ask it questions, and Claude answers them on the demo's own key, up to a daily limit.</dd>
+        </div>
+        <div>
+          <dt>When can I install it?</dt>
+          <dd>There is no date yet. Homeostat runs from source today and has no installer, but you can try the live demo now. Email hello@gethomeostat.com and you'll get one email when it installs.</dd>
+        </div>
       </dl>
-
-      <figure class="terminal" aria-label="Preview of the command line">
-        <div class="terminal-head">
-          <span>preview</span>
-          <span class="muted">the CLI is still called <code>openvitals</code>, its code name; it will be renamed</span>
-        </div>
-        <pre><code><span class="pr">$</span> openvitals serve
-<span class="out">openvitals daemon on http://127.0.0.1:7777 (db: ~/.local/share/openvitals/db.sqlite)</span>
-<span class="pr">$</span> openvitals connect whoop
-<span class="pr">$</span> openvitals sync
-<span class="pr">$</span> openvitals fhir export --out bundle.json</code></pre>
-      </figure>
     </section>
 
-    <!-- ============ THE NAME ============ -->
-    <section class="name" id="name" aria-labelledby="name-title">
-      <div class="name-grid">
-        <div class="name-copy">
-          <p class="eyebrow">On the name</p>
-          <h2 id="name-title"><em>home</em> + <em>stat</em> + homeo<em>stasis</em></h2>
-          <p>
-            <strong>Home</strong>, because it lives on your machine. <strong>Stat</strong>, because it keeps your numbers.
-            <strong>Homeostasis</strong>, because the point of looking at the numbers is a body that holds its own balance.
-          </p>
-          <p>
-            And the Homeostat itself: in 1948 W. Ross Ashby built a machine of four units, each a magnet-and-needle
-            circuit wired to the other three. Disturb one and the whole thing searched its own settings until every
-            needle came to rest again. It was among the first machines to regulate itself. We liked that the name was already taken by something that did only one job, well.
-          </p>
-        </div>
-        <aside class="name-aside">
-          <svg viewBox="0 0 240 240" class="ashby" aria-hidden="true" focusable="false">
-            <g fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="20" y="20" width="200" height="200" rx="4"/>
-              <circle cx="70" cy="70" r="30"/><circle cx="170" cy="70" r="30"/>
-              <circle cx="70" cy="170" r="30"/><circle cx="170" cy="170" r="30"/>
-              <path d="M100 70h40M100 170h40M70 100v40M170 100v40" stroke-dasharray="3 4"/>
-              <path d="M91 91l58 58M149 91l-58 58" stroke-dasharray="3 4" opacity=".6"/>
-            </g>
-            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M70 70V46"/><path d="M170 70V46"/><path d="M70 170V146"/><path d="M170 170V146"/>
-            </g>
-            <g fill="var(--amber)">
-              <circle cx="70" cy="70" r="3.5"/><circle cx="170" cy="70" r="3.5"/>
-              <circle cx="70" cy="170" r="3.5"/><circle cx="170" cy="170" r="3.5"/>
-            </g>
-          </svg>
-          <p class="caption">Four units, each correcting the others. Ashby, 1948.</p>
-        </aside>
+    <!-- DRAFT FOR THE AUTHOR TO EDIT: founder letter. Written on Serhii's behalf from the brief's facts;
+         check every sentence, especially the motivation in paragraph one, before publishing. -->
+    <section class="letter wrap" aria-label="A note from the person who built it">
+      <div class="letter-in">
+        <p>I wear a WHOOP, a Garmin watch and a FreeStyle Libre. Each came with its own app, and each app kept one slice of me. I got tired of switching between three of them to answer one question.</p>
+        <p>So I built Homeostat. It has run every day on my own data since late September 2026. The connectors, the evidence drawer, Ask with citations, offline run maps, Training, Goals, the MCP server and FHIR export all work. What's missing is an installer. For now it runs from source on my own computer, and you can try it on synthetic data in the <a href="https://demo.gethomeostat.com">live demo</a>.</p>
+        <p>When it installs, I'll send one email to everyone who asked. That's the only email you'll get from me.</p>
+        <p>There is no account, and the only Homeostat server is the demo, which runs on synthetic data. I never hold your data, so I have nothing of yours to sell.</p>
+        <p class="sign">Serhii Troinin, Amsterdam<br><a href="https://github.com/serhiitroinin">github.com/serhiitroinin</a></p>
       </div>
     </section>
 
-    <!-- ============ STATUS / CTA ============ -->
-    <section class="status" aria-labelledby="status-title">
-      <p class="eyebrow">Status</p>
-      <h2 id="status-title">Early preview.</h2>
-      <p class="lede">
-        Homeostat is being built by one engineer in Amsterdam who wears the sensors himself.
-        The connectors, the web app, Ask, the MCP server and FHIR export exist and run on his machine today.
-        It is not packaged for anyone else yet. The code is MIT-licensed and the source release is coming.
-      </p>
-      <p class="lede">
-        If you want to hear when it is ready to install, send a one-line email. It goes to a person, not a list.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="mailto:hello@homeostat.so?subject=Homeostat%20early%20access">Get notified</a>
-        <span class="muted mono">hello@homeostat.so</span>
+    <!-- close: the second dark band -->
+    <section class="close dark" aria-labelledby="close-title">
+      <div class="wrap close-in">
+        <h2 id="close-title">Early preview.</h2>
+        <p class="lede">It runs from source today and has no installer yet. Try the live demo now, or send a line and you'll get one email when it installs.</p>
+        <div class="cta cta-pair">
+          <div class="cta-item">
+            <a class="btn btn-lg btn-light" href="https://demo.gethomeostat.com">Try the live demo<span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <p class="micro">Real app, synthetic data. No sign-up.</p>
+          </div>
+          <div class="cta-item">
+            <a class="btn btn-lg btn-ghost" href="mailto:hello@gethomeostat.com?subject=Homeostat%20waitlist&amp;body=Tell%20me%20when%20Homeostat%20is%20installable.%0D%0ADevices%20I%20use%3A%20%0D%0AOperating%20system%3A%20">Email me when it installs</a>
+            <p class="micro">Opens your mail app. One email when it installs.</p>
+          </div>
+        </div>
+        <div class="addr-row">
+          <span class="addr" id="addr">hello@gethomeostat.com</span>
+          <button class="copy" type="button" data-copy="hello@gethomeostat.com" aria-describedby="addr" hidden>Copy address</button>
+          <span class="copy-status" role="status" aria-live="polite"></span>
+        </div>
+        <p class="status mono">Started 2026-09-21 · 28 merged pull requests · schema v12</p>
       </div>
+
+      <div class="wrap receipts">
+        <h2 class="mono receipts-title" id="receipts">Receipts</h2>
+        <ol>
+          <li id="r1">The daemon binds to 127.0.0.1 only, so other machines on your network can't reach it. Any tool that lists listening ports shows that address while it runs.</li>
+          <li id="r2">Connector tokens and your Anthropic API key are encrypted with AES-256-GCM before they are written. You can read that code once the source is released.</li>
+          <li id="r3">Fonts, images and styles on this page come from this domain. Open your browser's network tab and reload to check. No cookies, no analytics.</li>
+          <li id="r4">Fig 2 is the evidence drawer for one HRV reading: connector, batch key, raw payload hash, revision and normaliser.</li>
+          <li id="r5">Fig 4 is Settings, Engines, with a key saved: Claude (API) is the default engine and enabled, and Ollama stays local and optional. The Claude (API) row states the rule: your question and the values Ask looks up are sent to Anthropic. The saved key's last characters are blurred in the screenshot.</li>
+        </ol>
+      </div>
+
+      <footer class="foot wrap">
+        <div>
+          <p>Homeostat is made by <strong>PetFactory LLC</strong>, a Delaware company.</p>
+          <p>Named after W. Ross Ashby's 1948 Homeostat.</p>
+        </div>
+        <div class="dim">
+          <p>Screenshots show synthetic sample data.</p>
+          <p><a href="/privacy/">Privacy</a> · <a href="/releases.xml">Releases feed</a> · © 2026 PetFactory LLC</p>
+        </div>
+      </footer>
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="foot-row">
-      <p>Homeostat is made by <strong>PetFactory LLC</strong>, a Delaware company.</p>
-      <p><a href="mailto:hello@homeostat.so">hello@homeostat.so</a></p>
-    </div>
-    <div class="foot-row">
-      <p class="muted">No cookies, no tracking, no analytics on this site. <a href="/privacy/">Privacy</a></p>
-      <p class="muted">© 2026 PetFactory LLC</p>
-    </div>
-  </footer>
+  <script>
+    // Copy address. Without JS (or without the Clipboard API) the button stays hidden and the address stays selectable.
+    (function () {
+      var btn = document.querySelector('.copy');
+      var out = document.querySelector('.copy-status');
+      if (!btn || !navigator.clipboard || !window.isSecureContext) return;
+      btn.hidden = false;
+      var t;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(function () {
+          btn.textContent = 'Copied'; out.textContent = 'Address copied to the clipboard.';
+        }, function () {
+          out.textContent = "Couldn't copy. Select the address and copy it instead.";
+        });
+        clearTimeout(t);
+        t = setTimeout(function () { btn.textContent = 'Copy address'; out.textContent = ''; }, 3000);
+      });
+    })();
+  </script>
 </body>
 </html>

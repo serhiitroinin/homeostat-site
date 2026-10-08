@@ -1,0 +1,631 @@
+{
+  "generated": "2026-10-08",
+  "data": "synthetic",
+  "format": "webp q82",
+  "images": [
+    {
+      "screen": "overview",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Overview: 14-day glucose trace with time-in-range, daily table of sleep, HRV, resting HR, recovery and steps",
+      "files": [
+        {
+          "file": "overview-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 168244
+        },
+        {
+          "file": "overview-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 71198
+        }
+      ]
+    },
+    {
+      "screen": "overview-tall",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1640
+      },
+      "description": "Overview, full height: glucose window, 14-day table and per-source coverage",
+      "files": [
+        {
+          "file": "overview-tall-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 3280,
+          "bytes": 280774
+        },
+        {
+          "file": "overview-tall-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 1640,
+          "bytes": 118284
+        }
+      ]
+    },
+    {
+      "screen": "explore",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Explore: HRV rows with the evidence drawer open, tracing one value to its raw upstream record",
+      "files": [
+        {
+          "file": "explore-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 82376
+        },
+        {
+          "file": "explore-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 33994
+        }
+      ]
+    },
+    {
+      "screen": "training",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Training: 26-week running summary and the run map on a vector basemap",
+      "files": [
+        {
+          "file": "training-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 188930
+        },
+        {
+          "file": "training-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 57404
+        }
+      ]
+    },
+    {
+      "screen": "training-tall",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1500
+      },
+      "description": "Training, full height: run map, weekly distance chart and session list",
+      "files": [
+        {
+          "file": "training-tall-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 3000,
+          "bytes": 252166
+        },
+        {
+          "file": "training-tall-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 1500,
+          "bytes": 84684
+        }
+      ]
+    },
+    {
+      "screen": "goals",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 640
+      },
+      "description": "Goals: five active goals with progress rings and on-track status",
+      "files": [
+        {
+          "file": "goals-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1280,
+          "bytes": 76326
+        },
+        {
+          "file": "goals-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 640,
+          "bytes": 31486
+        }
+      ]
+    },
+    {
+      "screen": "ask",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Ask on synthetic sample data, Claude Haiku 5.5 on a real API key: 'Did I sleep longer on the nights after my long runs this past month?', a cited answer (four post-long-run nights about 26 min longer) with caveats",
+      "files": [
+        {
+          "file": "ask-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 134432
+        },
+        {
+          "file": "ask-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 57520
+        }
+      ]
+    },
+    {
+      "screen": "settings-engines",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 640
+      },
+      "description": "Settings, Engines with an API key saved: Claude (API) remote, default, enabled, key suffix blurred; Ollama local, no consent needed",
+      "files": [
+        {
+          "file": "settings-engines-dark@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1280,
+          "bytes": 36606
+        },
+        {
+          "file": "settings-engines-dark.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 640,
+          "bytes": 15060
+        }
+      ]
+    },
+    {
+      "screen": "mobile-overview",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Overview: current glucose, 14-day trace and time-in-range",
+      "files": [
+        {
+          "file": "mobile-overview-dark@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 91406
+        },
+        {
+          "file": "mobile-overview-dark@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 53884
+        }
+      ]
+    },
+    {
+      "screen": "mobile-ask",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Ask on a phone, synthetic sample data, Claude Haiku 5.5: end of the cited answer about sleep after long runs, caveats, composer",
+      "files": [
+        {
+          "file": "mobile-ask-dark@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 134920
+        },
+        {
+          "file": "mobile-ask-dark@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 83662
+        }
+      ]
+    },
+    {
+      "screen": "mobile-goals",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Goals: goal cards with progress rings and on-track status",
+      "files": [
+        {
+          "file": "mobile-goals-dark@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 78686
+        },
+        {
+          "file": "mobile-goals-dark@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 46678
+        }
+      ]
+    },
+    {
+      "screen": "mobile-training",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Training: run map and progress chart",
+      "files": [
+        {
+          "file": "mobile-training-dark@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 104012
+        },
+        {
+          "file": "mobile-training-dark@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 55140
+        }
+      ]
+    },
+    {
+      "screen": "overview",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Overview: 14-day glucose trace with time-in-range, daily table of sleep, HRV, resting HR, recovery and steps",
+      "files": [
+        {
+          "file": "overview-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 185442
+        },
+        {
+          "file": "overview-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 76812
+        }
+      ]
+    },
+    {
+      "screen": "overview-tall",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1640
+      },
+      "description": "Overview, full height: glucose window, 14-day table and per-source coverage",
+      "files": [
+        {
+          "file": "overview-tall-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 3280,
+          "bytes": 304286
+        },
+        {
+          "file": "overview-tall-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 1640,
+          "bytes": 127028
+        }
+      ]
+    },
+    {
+      "screen": "explore",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Explore: HRV rows with the evidence drawer open, tracing one value to its raw upstream record",
+      "files": [
+        {
+          "file": "explore-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 99590
+        },
+        {
+          "file": "explore-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 41270
+        }
+      ]
+    },
+    {
+      "screen": "training",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Training: 26-week running summary and the run map on a vector basemap",
+      "files": [
+        {
+          "file": "training-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 218582
+        },
+        {
+          "file": "training-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 68798
+        }
+      ]
+    },
+    {
+      "screen": "training-tall",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1500
+      },
+      "description": "Training, full height: run map, weekly distance chart and session list",
+      "files": [
+        {
+          "file": "training-tall-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 3000,
+          "bytes": 287986
+        },
+        {
+          "file": "training-tall-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 1500,
+          "bytes": 98338
+        }
+      ]
+    },
+    {
+      "screen": "goals",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 640
+      },
+      "description": "Goals: five active goals with progress rings and on-track status",
+      "files": [
+        {
+          "file": "goals-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1280,
+          "bytes": 83816
+        },
+        {
+          "file": "goals-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 640,
+          "bytes": 33782
+        }
+      ]
+    },
+    {
+      "screen": "ask",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Ask on synthetic sample data, Claude Haiku 5.5 on a real API key: 'Did I sleep longer on the nights after my long runs this past month?', a cited answer (four post-long-run nights about 26 min longer) with caveats",
+      "files": [
+        {
+          "file": "ask-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1800,
+          "bytes": 136062
+        },
+        {
+          "file": "ask-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 900,
+          "bytes": 58142
+        }
+      ]
+    },
+    {
+      "screen": "settings-engines",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 640
+      },
+      "description": "Settings, Engines with an API key saved: Claude (API) remote, default, enabled, key suffix blurred; Ollama local, no consent needed",
+      "files": [
+        {
+          "file": "settings-engines-light@2x.webp",
+          "scale": 2,
+          "width": 2880,
+          "height": 1280,
+          "bytes": 39470
+        },
+        {
+          "file": "settings-engines-light.webp",
+          "scale": 1,
+          "width": 1440,
+          "height": 640,
+          "bytes": 15944
+        }
+      ]
+    },
+    {
+      "screen": "mobile-overview",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Overview: current glucose, 14-day trace and time-in-range",
+      "files": [
+        {
+          "file": "mobile-overview-light@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 102542
+        },
+        {
+          "file": "mobile-overview-light@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 60818
+        }
+      ]
+    },
+    {
+      "screen": "mobile-ask",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Ask on a phone, synthetic sample data, Claude Haiku 5.5: end of the cited answer about sleep after long runs, caveats, composer",
+      "files": [
+        {
+          "file": "mobile-ask-light@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 139572
+        },
+        {
+          "file": "mobile-ask-light@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 85654
+        }
+      ]
+    },
+    {
+      "screen": "mobile-goals",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Goals: goal cards with progress rings and on-track status",
+      "files": [
+        {
+          "file": "mobile-goals-light@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 85334
+        },
+        {
+          "file": "mobile-goals-light@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 49814
+        }
+      ]
+    },
+    {
+      "screen": "mobile-training",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Mobile Training: run map and progress chart",
+      "files": [
+        {
+          "file": "mobile-training-light@3x.webp",
+          "scale": 3,
+          "width": 1170,
+          "height": 2532,
+          "bytes": 121372
+        },
+        {
+          "file": "mobile-training-light@2x.webp",
+          "scale": 2,
+          "width": 780,
+          "height": 1688,
+          "bytes": 64304
+        }
+      ]
+    }
+  ]
+}
