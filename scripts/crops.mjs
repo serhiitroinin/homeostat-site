@@ -18,8 +18,8 @@ const crops = [
   { name: "evidence-m", src: "explore", rect: [895, 90, 355, 410], scales: [2] },
   // Settings > Engines card, desktop
   { name: "engines", src: "settings-engines", rect: [286, 76, 776, 282], scales: [1, 2] },
-  // Engines, mobile: engine names, local/remote badges and toggles
-  { name: "engines-m", src: "settings-engines", rect: [300, 84, 400, 264], scales: [2] },
+  // Engines, mobile: engine names, badges, toggle and the saved key, cut past "enabled" so no word is clipped
+  { name: "engines-m", src: "settings-engines", rect: [294, 84, 490, 266], scales: [2] },
   // Training map band, desktop
   { name: "training", src: "training", rect: [0, 96, 1440, 700], scales: [1, 2] },
 ];
