@@ -2,7 +2,7 @@
   "name": "homeostat-site",
   "version": "0.1.0",
   "private": true,
-  "description": "Marketing site for Homeostat (homeostat.so)",
+  "description": "Marketing site for Homeostat (gethomeostat.com)",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
