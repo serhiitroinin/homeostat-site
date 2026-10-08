@@ -684,3 +684,6 @@ section { padding-block: clamp(4rem, 7vw, 6rem) 0; }
 .prose .back a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 500; }
 .page-foot { padding-bottom: 0; }
 .page-foot .foot { margin-top: 0; }
+/* a page shorter than the screen still ends on its footer, not on a strip of page background */
+.short { min-height: 100svh; display: flex; flex-direction: column; }
+.short main { flex: 1; }
