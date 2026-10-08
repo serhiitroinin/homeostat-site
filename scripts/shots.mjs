@@ -18,6 +18,12 @@ for (const scheme of ["light", "dark"]) {
       const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, colorScheme: scheme, deviceScaleFactor: 1, reducedMotion: "reduce" });
       const page = await ctx.newPage();
       await page.goto(base + path, { waitUntil: "networkidle" });
+      // scroll the page once so loading="lazy" images load before the full-page capture
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); }
+        window.scrollTo(0, 0);
+      });
+      await page.waitForLoadState("networkidle");
       await page.evaluate(() => document.fonts.ready);
       const file = resolve(out, `${name}-${w}-${scheme}.png`);
       await page.screenshot({ path: file, fullPage: true });
