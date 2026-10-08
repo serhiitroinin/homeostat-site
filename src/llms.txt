@@ -1,0 +1,28 @@
+# Homeostat
+
+> Homeostat is a self-hosted health data vault. WHOOP, Garmin and FreeStyle Libre data go into one SQLite file on your own computer. A local daemon on 127.0.0.1 is the only writer, and every value links to the raw record it came from.
+
+Homeostat is an early preview. It runs from source today and there is no installer yet. A public live demo at https://demo.gethomeostat.com runs the real app on synthetic sample data: read-only, no sign-up, and questions are answered by Claude up to a daily limit. The source repository is private; a source release is coming, under the MIT license.
+
+What it does:
+
+- Imports WHOOP, Garmin and FreeStyle Libre data into one local SQLite database.
+- Shows the evidence behind every value: connector, batch, raw payload hash and revision.
+- Ask: plain-language questions with cited answers, from Claude on the user's own Anthropic API key. Only the question and the records it needs go to Anthropic. Ollama is optional: it runs locally, needs no key, and nothing leaves the machine.
+- MCP server for your own agents, FHIR R4 export, offline run maps from a local PMTiles basemap, a Training page and Goals.
+- Stored secrets, including the Anthropic API key, are encrypted with AES-256-GCM in the local vault. No account and no telemetry. The only Homeostat server is the public demo, which holds synthetic data.
+
+Homeostat is not a medical device and gives no medical advice. Screenshots on the site show synthetic sample data.
+
+## Pages
+
+- [Home](https://gethomeostat.com/): what Homeostat is, screenshots, FAQ
+- [Live demo](https://demo.gethomeostat.com): the real app on synthetic sample data, read-only, no sign-up
+- [Privacy](https://gethomeostat.com/privacy/): what this site and the app collect
+- [Releases](https://gethomeostat.com/releases.xml): Atom feed of release notes
+
+## Contact
+
+- Email: hello@gethomeostat.com
+- Author: Serhii Troinin, Amsterdam (https://github.com/serhiitroinin)
+- Company: PetFactory LLC

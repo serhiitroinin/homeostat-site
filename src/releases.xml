@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Homeostat releases</title>
+  <subtitle>Release notes for Homeostat, a self-hosted health vault.</subtitle>
+  <id>https://gethomeostat.com/releases.xml</id>
+  <link rel="self" type="application/atom+xml" href="https://gethomeostat.com/releases.xml"/>
+  <link rel="alternate" type="text/html" href="https://gethomeostat.com/"/>
+  <updated>2026-10-08T12:00:00+02:00</updated>
+  <author>
+    <name>Serhii Troinin</name>
+    <email>hello@gethomeostat.com</email>
+    <uri>https://github.com/serhiitroinin</uri>
+  </author>
+  <entry>
+    <title>Site live; preview running on the author's own data</title>
+    <id>https://gethomeostat.com/releases.xml#2026-10-08-site-live</id>
+    <link rel="alternate" type="text/html" href="https://gethomeostat.com/"/>
+    <published>2026-10-08T12:00:00+02:00</published>
+    <updated>2026-10-08T12:00:00+02:00</updated>
+    <summary>gethomeostat.com is live. Homeostat runs from source on the author's own WHOOP, Garmin and FreeStyle Libre data. There is no installer yet; email hello@gethomeostat.com to hear when there is.</summary>
+  </entry>
+</feed>
