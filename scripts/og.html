@@ -1,40 +1,57 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
+<!-- Open Graph card in the Shore look. Render with: npm run og  (writes src/og.png, 1200x630) -->
 <style>
-  @font-face { font-family: "Instrument Serif"; src: url("../src/fonts/instrument-serif-regular.woff2") format("woff2"); }
-  @font-face { font-family: "Instrument Serif"; font-style: italic; src: url("../src/fonts/instrument-serif-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Fraunces"; font-weight: 300 700; src: url("../src/fonts/fraunces.woff2") format("woff2"); }
+  @font-face { font-family: "Fraunces"; font-style: italic; font-weight: 300 700; src: url("../src/fonts/fraunces-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Albert Sans"; font-weight: 400 600; src: url("../src/fonts/albert-sans.woff2") format("woff2"); }
   @font-face { font-family: "IBM Plex Mono"; src: url("../src/fonts/ibm-plex-mono-400.woff2") format("woff2"); }
   html, body { margin: 0; }
-  body { width: 1200px; height: 630px; background: #f4f0e6; color: #1c1a16; position: relative; overflow: hidden;
-    background-image: radial-gradient(900px 500px at 90% -10%, rgba(163,84,10,.14), transparent 60%),
-      repeating-linear-gradient(0deg, transparent 0 3px, rgba(28,26,22,.035) 3px 4px); }
-  .frame { position: absolute; inset: 40px; border: 1px solid #cdc5b3; }
-  .brand { position: absolute; left: 80px; top: 76px; display: flex; align-items: center; gap: 14px; font-family: "Instrument Serif"; font-size: 40px; }
-  .brand svg { width: 44px; height: 44px; }
-  .eyebrow { position: absolute; left: 80px; top: 170px; font-family: "IBM Plex Mono"; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: #514b40; }
-  h1 { position: absolute; left: 80px; top: 208px; margin: 0; width: 640px; font-family: "Instrument Serif"; font-weight: 400; font-size: 92px; line-height: .96; letter-spacing: -.02em; }
-  h1 em { color: #8f4706; }
-  .sub { position: absolute; left: 80px; top: 436px; width: 600px; font-family: "IBM Plex Mono"; font-size: 18px; line-height: 1.5; color: #514b40; }
-  .url { position: absolute; left: 80px; bottom: 58px; font-family: "IBM Plex Mono"; font-size: 17px; letter-spacing: .08em; color: #514b40; }
-  .panel { position: absolute; right: 80px; top: 170px; width: 360px; border: 1px solid #cdc5b3; background: #ebe6d9; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 1px; box-sizing: border-box; }
-  .panel { background: #cdc5b3; }
-  .dial { background: #ebe6d9; padding: 18px 14px 12px; text-align: center; font-family: "IBM Plex Mono"; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #514b40; }
-  .dial svg { width: 130px; display: block; margin: 0 auto 6px; overflow: visible; }
+  body { width: 1200px; height: 630px; background: #f3ede3; color: #1f2a24; position: relative; overflow: hidden;
+    font-family: "Albert Sans"; -webkit-font-smoothing: antialiased; }
+  .brand { position: absolute; left: 80px; top: 58px; display: flex; align-items: center; gap: 12px;
+    font-family: "Fraunces"; font-size: 30px; font-weight: 420; letter-spacing: -.01em; }
+  .brand svg { width: 32px; height: 32px; color: #3b5748; }
+  .host { position: absolute; right: 80px; top: 68px; font-family: "IBM Plex Mono"; font-size: 16px; letter-spacing: .08em; color: #58625c; }
+  .eyebrow { position: absolute; left: 80px; top: 136px; font-family: "IBM Plex Mono"; font-size: 15px; letter-spacing: .09em; text-transform: uppercase; color: #58625c; }
+  h1 { position: absolute; left: 76px; top: 180px; margin: 0; font-family: "Fraunces"; font-optical-sizing: auto; font-weight: 380;
+    font-size: 84px; line-height: 1.02; letter-spacing: -.015em; }
+  h1 em { font-style: italic; font-weight: 340; color: #9a4222; }
+  .sub { position: absolute; left: 80px; top: 372px; width: 760px; font-size: 22px; line-height: 1.5; color: #4b5650; }
+  .stage { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; overflow: hidden; border-top: 1px solid rgba(31,42,36,.10); }
+  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; opacity: .9; }
+  .stage::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(243,237,227,.55), rgba(243,237,227,0) 60%); }
+  .stage svg { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; }
+  .band { fill: rgba(126,170,138,.11); }
+  .band-edge { stroke: rgba(31,42,36,.18); stroke-dasharray: 2 7; }
+  .bloom { fill: none; stroke: rgba(96,200,150,.55); stroke-width: 8; vector-effect: non-scaling-stroke; }
+  .line { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 </style></head>
 <body>
-  <div class="frame"></div>
   <div class="brand">
-    <svg viewBox="0 0 64 64"><g fill="none" stroke="#1c1a16" stroke-width="3.5" stroke-linecap="round"><path d="M12 36a20 20 0 0 1 40 0"/><path d="M12 36h5M47 36h5M17.9 21.9l3.5 3.5M46.1 21.9l-3.5 3.5"/><path d="M32 36V18"/><path d="M14 48h36" stroke-width="3"/></g><circle cx="32" cy="36" r="4.5" fill="#8f4706"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M2 14h4l2.5-6L11 18l2.5-7 2 3H22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Homeostat
   </div>
-  <div class="eyebrow">Early preview · self-hosted · local-first</div>
-  <h1>Your health data, <em>kept at home.</em></h1>
-  <div class="sub">WHOOP, Garmin and FreeStyle Libre in one SQLite file on your machine. Charts with evidence, an offline run map, and an AI that cites every number.</div>
-  <div class="url">homeostat.so</div>
-  <div class="panel">
-    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Sleep</div>
-    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Strain</div>
-    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Glucose</div>
-    <div class="dial"><svg viewBox="0 0 120 90"><path d="M14 74a46 46 0 0 1 92 0" fill="none" stroke="#1c1a16" stroke-width="1.4"/><path d="M14 74h6M100 74h6M23.6 47.5l5.2 3M91.2 50.5l5.2-3M46.6 32.8l3 5.2M70.4 38l3-5.2M60 28v6" fill="none" stroke="#514b40" stroke-width="1.4" stroke-linecap="round"/><path d="M46 36a28 28 0 0 1 28 0" fill="none" stroke="#8f4706" stroke-width="3" opacity=".55"/><path d="M60 74V36" stroke="#1c1a16" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="74" r="4" fill="#8f4706"/></svg>Load</div>
+  <div class="host">gethomeostat.com</div>
+  <div class="eyebrow">Self-hosted health vault · WHOOP · Garmin · FreeStyle Libre</div>
+  <h1>Your health data,<br><em>kept at home.</em></h1>
+  <div class="sub">All three in one SQLite file on your own computer. Every number traces back to its raw record.</div>
+  <div class="stage">
+    <img src="../src/img/sand-1600.webp" alt="">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#1c6f52" stop-opacity="0"/><stop offset=".06" stop-color="#1c6f52"/>
+          <stop offset=".94" stop-color="#1c6f52"/><stop offset="1" stop-color="#1c6f52" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="blur" x="-5%" y="-40%" width="110%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
+        <path id="g" d="M0 201 L5 201 L10 201 L15 200 L20 200 L25 200 L30 199 L35 199 L40 199 L45 198 L50 198 L55 199 L60 199 L65 199 L70 199 L75 199 L80 199 L85 199 L90 199 L95 199 L100 199 L105 199 L110 198 L115 199 L120 199 L125 199 L130 198 L135 198 L140 199 L145 199 L150 199 L155 200 L160 201 L165 201 L170 201 L175 202 L180 202 L185 201 L190 201 L195 201 L200 202 L205 203 L210 203 L215 203 L220 204 L225 204 L230 204 L235 204 L240 204 L245 204 L250 203 L255 201 L260 200 L265 199 L270 198 L276 197 L281 197 L286 197 L291 196 L296 195 L301 194 L306 194 L311 194 L316 193 L321 193 L326 193 L331 193 L336 194 L341 195 L346 196 L351 196 L356 198 L361 199 L366 200 L371 201 L376 204 L381 205 L386 207 L391 208 L396 210 L401 212 L406 213 L411 215 L416 217 L421 220 L426 221 L431 224 L436 228 L441 233 L446 240 L451 246 L456 252 L461 256 L466 259 L471 260 L476 261 L481 260 L486 256 L491 251 L496 244 L501 234 L506 221 L511 208 L516 194 L521 179 L526 165 L531 152 L536 140 L541 129 L546 123 L551 118 L556 118 L562 121 L567 125 L572 130 L577 136 L582 143 L587 150 L592 157 L597 164 L602 172 L607 178 L612 185 L617 191 L622 197 L627 202 L632 207 L637 211 L642 215 L647 218 L652 221 L657 223 L662 224 L667 225 L672 226 L677 227 L682 228 L687 228 L692 229 L697 229 L702 228 L707 228 L712 228 L717 227 L722 227 L727 226 L732 225 L737 226 L742 226 L747 226 L752 226 L757 226 L762 226 L767 226 L772 225 L777 225 L782 224 L787 221 L792 217 L797 211 L802 204 L807 195 L812 186 L817 176 L822 165 L827 154 L832 144 L837 135 L842 128 L847 126 L853 125 L858 127 L863 130 L868 133 L873 136 L878 140 L883 144 L888 149 L893 154 L898 160 L903 165 L908 170 L913 174 L918 178 L923 182 L928 186 L933 189 L938 193 L943 195 L948 198 L953 200 L958 202 L963 203 L968 204 L973 205 L978 205 L983 206 L988 206 L993 206 L998 205 L1003 205 L1008 204 L1013 204 L1018 205 L1023 204 L1028 204 L1033 204 L1038 204 L1043 204 L1048 204 L1053 204 L1058 205 L1063 205 L1068 205 L1073 204 L1078 203 L1083 203 L1088 202 L1093 202 L1098 202 L1103 202 L1108 202 L1113 201 L1118 200 L1123 200 L1128 199 L1133 199 L1139 200 L1144 200 L1149 200 L1154 200 L1159 199 L1164 200 L1169 199 L1174 197 L1179 194 L1184 190 L1189 182 L1194 173 L1199 162 L1204 150 L1209 137 L1214 124 L1219 111 L1224 97 L1229 87 L1234 80 L1239 76 L1244 76 L1249 79 L1254 82 L1259 86 L1264 90 L1269 94 L1274 99 L1279 104 L1284 110 L1289 116 L1294 122 L1299 129 L1304 136 L1309 142 L1314 148 L1319 155 L1324 161 L1329 166 L1334 171 L1339 175 L1344 179 L1349 183 L1354 186 L1359 189 L1364 191 L1369 194 L1374 196 L1379 198 L1384 200 L1389 201 L1394 203 L1399 205 L1404 206 L1409 207 L1414 208 L1419 208 L1424 208 L1430 208 L1435 209 L1440 209"/>
+      </defs>
+      <rect class="band" x="0" y="22" width="1440" height="267"/>
+      <line class="band-edge" x1="0" y1="22" x2="1440" y2="22" vector-effect="non-scaling-stroke"/>
+      <line class="band-edge" x1="0" y1="289" x2="1440" y2="289" vector-effect="non-scaling-stroke"/>
+      <use class="bloom" href="#g" filter="url(#blur)"/>
+      <use class="line" href="#g" stroke="url(#edge)" vector-effect="non-scaling-stroke"/>
+    </svg>
   </div>
 </body></html>
